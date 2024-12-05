@@ -268,7 +268,7 @@ class GaudiQwen2VLSdpaAttention(Qwen2VLSdpaAttention):
         if FusedSDPA is not None and use_flash_attention:
             input_dtype = query_states.dtype
             # For accuracy
-            target_dtype = torch.float16
+            target_dtype = torch.bfloat16
             if input_dtype != target_dtype:
                 warnings.warn("FusedSDPA Type conversion for Accuracy")
                 query_states = query_states.to(target_dtype)
